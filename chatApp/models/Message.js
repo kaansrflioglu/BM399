@@ -4,7 +4,13 @@ const messageSchema = new Schema({
   content: String,
   roomId: String,
   username: String,
-  createdDate: { type: Date, default: Date.now },
+  createdDate: {
+    type: Date,
+    default: () => {
+      const now = new Date();
+      return new Date(now.getTime() + (3 * 60 * 60 * 1000));
+    }
+  }
 });
 
 module.exports = mongoose.model("message", messageSchema);
