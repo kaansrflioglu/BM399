@@ -1,0 +1,35 @@
+<div id="app">
+
+  <form class="center bg-paint-white" *ngIf="!conversation" [formGroup]="conversationFormGroup"
+    (ngSubmit)="getOrcreateConversation()">
+
+    <div class="cercevele">
+      <mat-form-field>
+        <mat-label>Oda Kodu</mat-label>
+        <input type="text" matInput formControlName="name" /> </mat-form-field>&nbsp;
+      <button class="button" mat-raised-button color="primary" type="submit" [disabled]="!conversationFormGroup.valid"
+        title="Konferans Oluştur/Katıl">
+        Konferans Oluştur
+      </button>
+    </div>
+  </form>
+
+  <button class="button" id="toggle-cam" (click)="toggleCamera()">
+    {{ isCameraEnabled ? 'Hide cam' : 'Show cam' }}
+  </button>
+  <button class="button" id="toggle-mic" (click)="toggleMicrophone()">
+    {{ isMicrophoneEnabled ? 'Mute mic' : 'Unmute mic' }}
+  </button>
+    
+
+  <div *ngIf="conversation" class="container">
+    <div id="remote-container" [ngClass]="{
+        fullscreen2: remotesCounter > 0 && remotesCounter <= 2,
+        fullscreen4: remotesCounter > 2
+      }"></div>
+
+    <div id="local-container" [ngClass]="{ over: remotesCounter > 0 }">
+      <video class="main-video" #localVideo autoplay playsinline></video>
+    </div>
+  </div>
+</div>

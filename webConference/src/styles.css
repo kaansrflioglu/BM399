@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.fullscreen4 video {
+  width: 24vw;
+  border: 3px solid red;
+  margin: 3px;
+}
+
+.fullscreen2 video {
+  width: 500px;
+  border: 3px solid red;
+  margin: 3px;
+}
+
